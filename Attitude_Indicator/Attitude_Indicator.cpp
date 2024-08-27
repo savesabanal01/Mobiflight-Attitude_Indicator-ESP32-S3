@@ -92,7 +92,8 @@ void Attitude_Indicator::set(int16_t messageID, char *setPoint)
     // do something according your messageID
     switch (messageID) {
     case -1:
-        // // tbd., get's called when Mobiflight shuts down
+        // // tbd., get's called when Mobiflight shuts down        
+        tft.drawString("Message ID 1: " + String(messageID), 10, 10, 2);
         tft.drawString("Data 1: " + String(data), 10, 10, 2);
         setPowerSaveMode(true);
     case -2:
@@ -168,7 +169,11 @@ void Attitude_Indicator::drawAll()
 
 void Attitude_Indicator::setPitch(float value)
 {
-    pitch = value;
+    if (value >= 40)
+        pitch = 40;
+    else if (value <= -40)
+        pitch = -40;
+    else pitch = value;
 }
 
 void Attitude_Indicator::setRoll(float value)
