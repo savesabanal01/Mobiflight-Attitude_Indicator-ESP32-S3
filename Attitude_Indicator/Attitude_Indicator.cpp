@@ -141,6 +141,8 @@ void Attitude_Indicator::update()
     // Do something which is required regulary
   if(_messageID == -1)
     setPowerSaveMode(true);
+  else setPowerSaveMode(false);
+  
   if(!powerSaveFlag)
   {
 
