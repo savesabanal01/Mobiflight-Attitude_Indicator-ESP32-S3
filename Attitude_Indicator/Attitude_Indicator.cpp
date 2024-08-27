@@ -42,11 +42,11 @@ void Attitude_Indicator::begin()
   tft.begin();
   tft.setRotation(3);
   tft.fillScreen(PANEL_COLOR);
-  tft.setPivot(320, 160);
   tft.setSwapBytes(true);
   tft.pushImage(160, 80, 160, 160, logo);
   delay(3000);
   tft.fillScreen(TFT_BLACK);
+  tft.setSwapBytes(false);
 
   mainSpr.createSprite(320, 320);
   mainSpr.setSwapBytes(true);
@@ -102,12 +102,12 @@ void Attitude_Indicator::set(int16_t messageID, char *setPoint)
     switch (messageID) {
     case -1:
         // // tbd., get's called when Mobiflight shuts down        
-        tft.drawString("Data 1: " + String(data), 10, 10, 2);
+        tft.drawString("Data 1: " + String(data), 10, 20, 2);
         setPowerSaveMode(true);
         break;
     case -2:
         // // tbd., get's called when PowerSavingMode is entered
-        tft.drawString("Data 2: " + String(data), 10, 30, 2);
+        tft.drawString("Data 2: " + String(data), 10, 40, 2);
         if (data == 1)
             setPowerSaveMode(true);
         else if (data == 0)
@@ -142,8 +142,8 @@ void Attitude_Indicator::update()
   if(_messageID == -1)
     setPowerSaveMode(true);
   else setPowerSaveMode(false);
-  
-  if(!powerSaveFlag)
+
+  if(powerSaveFlag == false)
   {
 
     analogWrite(TFT_BL, instrumentBrightness);
@@ -156,7 +156,7 @@ void Attitude_Indicator::update()
     drawAll();
 
    }
-   else digitalWrite(TFT_BL, HIGH);
+   else digitalWrite(TFT_BL, LOW);
 
 }
 
