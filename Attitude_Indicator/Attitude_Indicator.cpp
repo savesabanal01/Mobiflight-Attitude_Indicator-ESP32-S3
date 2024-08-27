@@ -47,6 +47,7 @@ void Attitude_Indicator::begin()
   delay(3000);
   tft.fillScreen(TFT_BLACK);
   tft.setSwapBytes(false);
+  tft.setPivot(240, 160);
 
   mainSpr.createSprite(320, 320);
   mainSpr.setSwapBytes(true);
