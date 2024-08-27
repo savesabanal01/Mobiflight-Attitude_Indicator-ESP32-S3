@@ -97,18 +97,14 @@ void Attitude_Indicator::set(int16_t messageID, char *setPoint)
     ********************************************************************************** */
     int32_t data = strtoul(setPoint, NULL, 10);
     // uint16_t output;
-    _messageID = messageID;
-    tft.drawString("Message ID: " + String(messageID), 10, 0, 2);
     // do something according your messageID
     switch (messageID) {
     case -1:
         // // tbd., get's called when Mobiflight shuts down        
-        tft.drawString("Data 1: " + String(data), 10, 30, 2);
         setPowerSaveMode(true);
         break;
     case -2:
         // // tbd., get's called when PowerSavingMode is entered
-        tft.drawString("Data 2: " + String(data), 10, 60, 2);
         if (data == 1)
             setPowerSaveMode(true);
         else if (data == 0)
@@ -140,13 +136,9 @@ void Attitude_Indicator::update()
 {
 
     // Do something which is required regulary
-  if(_messageID == -1)
-    setPowerSaveMode(true);
-  else setPowerSaveMode(false);
 
   if(powerSaveFlag == false)
   {
-
     analogWrite(TFT_BL, instrumentBrightness);
 
     if(prevScreenRotation != screenRotation)
@@ -157,6 +149,7 @@ void Attitude_Indicator::update()
     drawAll();
 
    }
+   
    else digitalWrite(TFT_BL, LOW);
 
 }
@@ -206,15 +199,9 @@ void Attitude_Indicator::setScreenRotation(int rotation)
 void Attitude_Indicator::setPowerSaveMode(bool enabled)
 {
     if(enabled)
-    {
-        digitalWrite(TFT_BL, LOW);
         powerSaveFlag = true;
-    }
     else
-    {
-        analogWrite(TFT_BL, instrumentBrightness);
         powerSaveFlag = false;
-    }
 }
 
 void Attitude_Indicator::setInstrumentBrightnessRatio(float ratio)

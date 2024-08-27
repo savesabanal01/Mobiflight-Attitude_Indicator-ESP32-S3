@@ -24,7 +24,6 @@ private:
     int instrumentBrightness = 255;
     int screenRotation = 3;
     int prevScreenRotation = 3;
-    int16_t _messageID;
 
     // Function declarations
     float scaleValue(float x, float in_min, float in_max, float out_min, float out_max);
