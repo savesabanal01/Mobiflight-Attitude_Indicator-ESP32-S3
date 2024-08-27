@@ -23,21 +23,20 @@
     "CanInstallFirmware": true,
     "CanResetBoard": true,
     "DelayAfterFirmwareUpdate": 0,
-    "FirmwareBaseName": "mobiflight_template_esp32s3",
+    "FirmwareBaseName": "Attitude_Indicator_esp32s3",
     "FirmwareExtension": "bin",
-    "FriendlyName": "Template ESP32-S3 DevKitC1",
-    "LatestFirmwareVersion": "2.5.1",
-    "MobiFlightType": "Mobiflight Template ESP32-S3 DevKitC1",
+    "FriendlyName": "Attitude Indicator ESP32-S3",
+    "LatestFirmwareVersion": "2.5.2",
+    "MobiFlightType": "Attitude_Indicator_ESP32-S3",
     "ResetFirmwareFile": "reset.raspberry_pico_flash_nuke.uf2",
     "CustomDeviceTypes": [
-      "MOBIFLIGHT_TEMPLATE",
-      "MOBIFLIGHT_TEMPLATE2"
+      "Attitude_Indicator"
     ],
     "Community": {
-      "Project": "Your Project",
-      "Website": "https://YourWebsite.com",
-      "Docs": "https://YourWebsite.com",
-      "Support": "https://YourWebsite.com"
+      "Project": "Attitude Indicator ESP32-S3",
+      "Website": "https://www.youtube.com/channel/UCFSyaCJK2cgowmSb3v3u2Ow",
+      "Docs": "https://github.com/savesabanal01/Mobiflight-Attitude_Indicator-ESP32-S3/tree/Attitude_Indicator",
+      "Support": "https://discord.com/invite/99vHbK7"
     }
   },
   "ModuleLimits": {
