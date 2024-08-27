@@ -7,6 +7,9 @@
 #include <bezel.h>
 #include <roll_scale.h>
 #include <pitch_scale.h>
+#include <logo.h>
+
+#define PANEL_COLOR 0x7BEE
 
 TFT_eSPI tft = TFT_eSPI(); // Invoke custom library
 
@@ -35,10 +38,15 @@ void Attitude_Indicator::begin()
 
   delay(1000); // wait for serial monitor to open
 
+  Serial.begin(115200);
   tft.begin();
-  tft.setRotation(screenRotation);
+  tft.setRotation(3);
+  tft.fillScreen(PANEL_COLOR);
+  tft.setPivot(320, 160);
+  tft.setSwapBytes(true);
+  tft.pushImage(160, 80, 160, 160, logo);
+  delay(3000);
   tft.fillScreen(TFT_BLACK);
-  tft.setPivot(240, 160);
 
   mainSpr.createSprite(320, 320);
   mainSpr.setSwapBytes(true);
@@ -88,6 +96,7 @@ void Attitude_Indicator::set(int16_t messageID, char *setPoint)
     ********************************************************************************** */
     int32_t data = strtoul(setPoint, NULL, 10);
     // uint16_t output;
+    _messageID = messageID;
     tft.drawString("Message ID: " + String(messageID), 0, 0, 2);
     // do something according your messageID
     switch (messageID) {
@@ -95,6 +104,7 @@ void Attitude_Indicator::set(int16_t messageID, char *setPoint)
         // // tbd., get's called when Mobiflight shuts down        
         tft.drawString("Data 1: " + String(data), 10, 10, 2);
         setPowerSaveMode(true);
+        break;
     case -2:
         // // tbd., get's called when PowerSavingMode is entered
         tft.drawString("Data 2: " + String(data), 10, 30, 2);
@@ -102,6 +112,7 @@ void Attitude_Indicator::set(int16_t messageID, char *setPoint)
             setPowerSaveMode(true);
         else if (data == 0)
             setPowerSaveMode(false);
+        break;
     case 0:
         // output = (uint16_t)data;
         // data   = output;
@@ -128,6 +139,8 @@ void Attitude_Indicator::update()
 {
 
     // Do something which is required regulary
+  if(_messageID == -1)
+    setPowerSaveMode(true);
   if(!powerSaveFlag)
   {
 
