@@ -98,17 +98,17 @@ void Attitude_Indicator::set(int16_t messageID, char *setPoint)
     int32_t data = strtoul(setPoint, NULL, 10);
     // uint16_t output;
     _messageID = messageID;
-    tft.drawString("Message ID: " + String(messageID), 0, 0, 2);
+    tft.drawString("Message ID: " + String(messageID), 10, 0, 2);
     // do something according your messageID
     switch (messageID) {
     case -1:
         // // tbd., get's called when Mobiflight shuts down        
-        tft.drawString("Data 1: " + String(data), 10, 20, 2);
+        tft.drawString("Data 1: " + String(data), 10, 30, 2);
         setPowerSaveMode(true);
         break;
     case -2:
         // // tbd., get's called when PowerSavingMode is entered
-        tft.drawString("Data 2: " + String(data), 10, 40, 2);
+        tft.drawString("Data 2: " + String(data), 10, 60, 2);
         if (data == 1)
             setPowerSaveMode(true);
         else if (data == 0)
