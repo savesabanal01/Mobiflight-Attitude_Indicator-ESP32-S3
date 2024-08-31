@@ -137,8 +137,21 @@ void Attitude_Indicator::update()
 
     // Do something which is required regulary
 
-  if(powerSaveFlag == false)
-  {
+//   if(powerSaveFlag == false)
+//   {
+//     analogWrite(TFT_BL, instrumentBrightness);
+
+//     if(prevScreenRotation != screenRotation)
+//     {
+//         tft.setRotation(screenRotation);
+//         prevScreenRotation = screenRotation;
+//     }
+//     drawAll();
+
+//    }
+   
+//    else digitalWrite(TFT_BL, LOW);
+
     analogWrite(TFT_BL, instrumentBrightness);
 
     if(prevScreenRotation != screenRotation)
@@ -147,10 +160,6 @@ void Attitude_Indicator::update()
         prevScreenRotation = screenRotation;
     }
     drawAll();
-
-   }
-   
-   else digitalWrite(TFT_BL, LOW);
 
 }
 
