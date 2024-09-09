@@ -44,7 +44,7 @@
         <source type="Variable" varType="number" varName="Rotation" varExpression="$" />
         <test type="Float" value="1" />
         <modifiers>
-          <transformation active="True" expression="3" />
+          <transformation active="True" expression="1" />
         </modifiers>
         <display type="CustomDevice" serial="Attitude Indicator ESP32-S3/ SN-48CA439B5068" trigger="normal" customType="" customName="Attitude Indicator ESP32-S3" messageType="100" value="$" />
         <preconditions />
