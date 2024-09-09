@@ -47,7 +47,7 @@ void Attitude_Indicator::begin()
   delay(3000);
   tft.fillScreen(TFT_BLACK);
   tft.setSwapBytes(false);
-  tft.setPivot(240, 160);
+//   tft.setPivot(240, 160);
 
   mainSpr.createSprite(320, 320);
   mainSpr.setSwapBytes(true);
@@ -159,7 +159,18 @@ void Attitude_Indicator::update()
         tft.setRotation(screenRotation);
         prevScreenRotation = screenRotation;
     }
+    if (screenRotation == 1 || screenRotation == 3)
+    {
+        tft.setViewport(80, 0, 320, 320, true);
+        drawAll();
+    }
+    else if (screenRotation == 0 || screenRotation == 2)
+    {
+        tft.setViewport(0, 80, 320, 320, true);
+        drawAll();
+    }
     drawAll();
+
 
 }
 
@@ -179,6 +190,11 @@ void Attitude_Indicator::drawAll()
 
   mainSpr.setPivot(160, 160);
   mainSpr.setSwapBytes(true);
+
+  if (screenRotation == 1 || screenRotation == 3)
+    tft.setPivot(240, 160);
+  else if (screenRotation == 0 || screenRotation == 2)
+    tft.setPivot(160, 240);
 
   bezelSpr.pushRotated(&mainSpr, roll, TFT_BLACK);
   mainSpr.pushRotated(-roll, TFT_BLACK);
@@ -201,16 +217,23 @@ void Attitude_Indicator::setRoll(float value)
 
 void Attitude_Indicator::setScreenRotation(int rotation)
 {
-  if(rotation == 1 || rotation == 3)
+  if(rotation >= 0 || rotation <= 3)
     screenRotation = rotation;
 }
 
 void Attitude_Indicator::setPowerSaveMode(bool enabled)
 {
     if(enabled)
+    {
+        digitalWrite(TFT_BL, LOW);
+        tft.fillScreen(TFT_BLACK);
         powerSaveFlag = true;
+    }
     else
+    {
+        analogWrite(TFT_BL, instrumentBrightness);
         powerSaveFlag = false;
+    }
 }
 
 void Attitude_Indicator::setInstrumentBrightnessRatio(float ratio)

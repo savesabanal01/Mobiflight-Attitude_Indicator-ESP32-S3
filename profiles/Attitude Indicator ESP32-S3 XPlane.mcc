@@ -8,7 +8,7 @@
         <source type="XplaneDataRef" path="sim/cockpit2/gauges/indicators/pitch_vacuum_deg_pilot" />
         <test type="Float" value="1" />
         <modifiers />
-        <display type="CustomDevice" serial="Attitude Indicator ESP32-S3/ SN-24587CDE6C94" trigger="normal" customType="" customName="Attitude Indicator ESP32-S3" messageType="0" value="$" />
+        <display type="CustomDevice" serial="Attitude Indicator ESP32-S3/ SN-48CA439B5068" trigger="normal" customType="" customName="Attitude Indicator ESP32-S3" messageType="0" value="$" />
         <preconditions />
         <configrefs />
       </settings>
@@ -20,7 +20,7 @@
         <source type="XplaneDataRef" path="sim/cockpit2/gauges/indicators/roll_vacuum_deg_pilot" />
         <test type="Float" value="1" />
         <modifiers />
-        <display type="CustomDevice" serial="Attitude Indicator ESP32-S3/ SN-24587CDE6C94" trigger="normal" customType="" customName="Attitude Indicator ESP32-S3" messageType="1" value="$" />
+        <display type="CustomDevice" serial="Attitude Indicator ESP32-S3/ SN-48CA439B5068" trigger="normal" customType="" customName="Attitude Indicator ESP32-S3" messageType="1" value="$" />
         <preconditions />
         <configrefs />
       </settings>
@@ -32,7 +32,7 @@
         <source type="XplaneDataRef" path="sim/cockpit2/electrical/instrument_brightness_ratio_manual[1]" />
         <test type="Float" value="1" />
         <modifiers />
-        <display type="CustomDevice" serial="Attitude Indicator ESP32-S3/ SN-24587CDE6C94" trigger="normal" customType="" customName="Attitude Indicator ESP32-S3" messageType="2" value="$" />
+        <display type="CustomDevice" serial="Attitude Indicator ESP32-S3/ SN-48CA439B5068" trigger="normal" customType="" customName="Attitude Indicator ESP32-S3" messageType="2" value="$" />
         <preconditions />
         <configrefs />
       </settings>
@@ -46,7 +46,7 @@
         <modifiers>
           <transformation active="True" expression="3" />
         </modifiers>
-        <display type="CustomDevice" serial="Attitude Indicator ESP32-S3/ SN-24587CDE6C94" trigger="normal" customType="" customName="Attitude Indicator ESP32-S3" messageType="100" value="$" />
+        <display type="CustomDevice" serial="Attitude Indicator ESP32-S3/ SN-48CA439B5068" trigger="normal" customType="" customName="Attitude Indicator ESP32-S3" messageType="100" value="$" />
         <preconditions />
         <configrefs />
       </settings>
