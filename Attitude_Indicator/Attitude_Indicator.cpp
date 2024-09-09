@@ -217,7 +217,7 @@ void Attitude_Indicator::setRoll(float value)
 
 void Attitude_Indicator::setScreenRotation(int rotation)
 {
-  if(rotation >= 0 || rotation <= 3)
+  if(rotation >= 0 && rotation <= 3)
     screenRotation = rotation;
 }
 
